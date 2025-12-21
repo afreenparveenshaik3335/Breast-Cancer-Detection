@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Breast Cancer Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+
+            background-image: url("./Assest/omg7.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 40px;
+            border-radius: 15px;
+            width: 350px;
+            text-align: center;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+        }
+
+        h2 {
+            margin-bottom: 30px;
+            color: #003B4A;
+            font-size: 22px;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            background: linear-gradient(to right, #228cbe, #66CCFF);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(0, 166, 199, 0.4);
+        }
+
+        input[type="submit"]:hover {
+            background: linear-gradient(to right, #0093B1, #228cbe);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <h2>Login to AI Breast Cancer Diagnostic Assistant 🩺</h2>
+
+        <!-- 🔗 Connect HTML Login → Streamlit -->
+        <form action="http://localhost:8501" method="get">
+             <!-- Prevent Chrome from auto-filling -->
+            <input type="text" name="fake_username" style="display:none">
+            <input type="password" name="fake_password" style="display:none">
+
+            <input type="text" name="username" placeholder="Enter Username" autocomplete="new-username" required>
+            <input type="password" name="password" placeholder="Enter Password" autocomplete="new-password" required>
+
+            <input type="submit" value="Login">
+        </form>
+    </div>
+</body>
+</html>

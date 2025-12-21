@@ -3,10 +3,13 @@ import numpy as np
 import streamlit as st
 import plotly.express as px
 import plotly.graph_objs as go
-import joblib
+import joblib  
 import seaborn as sns
 import requests
 import pickle
+import base64
+from reportlab.lib.pagesizes import letter
+from reportlab.pdfgen import canvas
 import os
 from io import BytesIO
 import matplotlib.pyplot as plt
@@ -31,6 +34,30 @@ class BreastCancerDetectionApp:
 
     def setup_page(self):
         # Option to change background color
+        st.sidebar.markdown(
+
+            """
+            <a href="http://127.0.0.1:5500/welcome.html">
+                <button style="
+                    width: 100%;
+                    padding: 12px 20px;
+                    background: linear-gradient(135deg, #2C3E50 0%, #3498DB 100%);
+                    color: white;
+                    border: none;
+                    border-radius: 6px;
+                    cursor: pointer;
+                    font-size: 16px;
+                    font-weight: 600;
+                    margin-bottom: 20px;
+                ">
+                  ←- Back to Welcome page
+                </button>
+            </a>
+            """,
+            unsafe_allow_html=True
+        )
+
+        
         bg_color = st.sidebar.selectbox("Select Background Color", ["Grey", "White", "Light Blue", "Light Green", "Light Yellow", "Light Grey", "Light Pink"])
         if bg_color == "Grey":
             bg_color_code = "#F4F6F7"
@@ -102,7 +129,9 @@ class BreastCancerDetectionApp:
         }}
         </style>
         """, unsafe_allow_html=True)
+       
 
+        
     def load_resources(self):
 
         @st.cache_resource
@@ -459,6 +488,7 @@ class BreastCancerDetectionApp:
         return pd.DataFrame(features, index=[0])
 
     def run(self):
+        
         st.markdown("<div class='main-header'><h1>🩺 AI Breast Cancer Diagnostic Assistant</h1></div>", unsafe_allow_html=True)
         cols = st.columns(3)
         metrics = [
@@ -475,6 +505,29 @@ class BreastCancerDetectionApp:
 
         st.sidebar.markdown("## 🔬 Patient Feature Input")
         input_df = self.interactive_feature_selection()
+        # Add logout button at bottom of sidebar
+        st.sidebar.markdown("---")
+        st.sidebar.markdown(
+            """
+            <a href="http://127.0.0.1:5500/login.html">
+                <button style="
+                    width: 100%;
+                    padding: 12px 20px;
+                    background: linear-gradient(135deg, #2C3E50 0%, #3498DB 100%);
+                    color: white;
+                    border: none;
+                    border-radius: 6px;
+                    cursor: pointer;
+                    font-size: 16px;
+                    font-weight: 600;
+                ">
+                    ⏻ Logout
+                </button>
+            </a>
+            """,
+            unsafe_allow_html=True
+        )
+
         # scale input safely
         try:
             input_scaled = self.scaler.transform(input_df)
@@ -506,36 +559,29 @@ class BreastCancerDetectionApp:
         st.markdown("### 👨‍💻 Developer Information")
 
         # Create two columns for developer information
-        col1, col2, col3, col4, col5 = st.columns(5)
+        col1, col2, col3 = st.columns(3)
 
         with col1:
-            st.markdown("🧑🏻‍💻 Naveen S")
-            st.markdown("📞 Contact: +91 7448863062")
-            st.markdown("📧 Email: snaveen8105@gmail.com")
-            st.markdown("Github: [Click here!](https://github.com/naveeen0308/Breast-cancer-detection)")
-            st.markdown("Linkedin: [Click here!](https://www.linkedin.com/in/naveen-s-a70854268/)")
+            st.markdown("Shaik Afreen Parveen🧑🏻‍💻 ")
+            st.markdown("Email📧 : 22kh1a3335@gmail.com")
+            st.markdown("Github: [Click here!](https://github.com/afreenparveenshaik3335)")
+            st.markdown("Linkedin: [Click here!](https://www.linkedin.com/in/afreen-parveen-shaik-03561a2bb/)")
 
         with col2:
-            st.markdown("🧑🏻‍💻 B.Krishna Raja Sree")
-            st.markdown("📧 Email: 22b01a4609@svecw.edu.in")
-            st.markdown("Github: [Click here!](https://github.com/krishnasree76/)")
-            st.markdown("Linkedin: [Click here!](https://www.linkedin.com/in/krishna-raja-sree-bonam-7b6079257/)")
+            st.markdown("Koduru Madhavi🧑🏻‍💻")
+            st.markdown("Email📧 : kodurumadhavi230@gmail.com")
+            st.markdown("Github: [Click here!](https://github.com/kodurumadhavi)")
+            st.markdown("Linkedin: [Click here!](https://www.linkedin.com/in/koduru-madhavi-801721372/)")
             
         with col3:
-            st.markdown("🧑🏻‍💻 Joseph Boban")
-            st.markdown("📧 Email: joseph.dm254031@greatlakes.edu.in")
-            st.markdown("Github: [Click here!](https://github.com/josephboban2000)")
-            st.markdown("Linkedin: [Click here!](https://www.linkedin.com/in/josephboban/)")
+            st.markdown("Shaik Mohammad Kabeer🧑🏻‍💻 ")
+            st.markdown("Email📧 : kabeershaik3337@gmail.com")
+            st.markdown("Github: [Click here!](https://github.com/Shaik-Kabeer-max)")
+            st.markdown("Linkedin: [Click here!](https://www.linkedin.com/in/shaik-kabeer-696014318/)")
          
-        with col4:
-            st.markdown("🧑🏻‍💻 Shaik Ayesha Parveen")
-            st.markdown("📧 Email: ayeshparveen25@gmail.com")
-            st.markdown("Github: [Click here!](https://github.com/ShaikAyeshaparveen25/)")
-        with col5:
-            st.markdown("🧑🏻‍💻 Gayathri R")
-            st.markdown("📧 Email: gayathri.22ad@kct.ac.in")
-            st.markdown("Github: [Click here!](https://github.com/Gayathri-R-04/)")    
+        
 
+        
 
 def main():
     app = BreastCancerDetectionApp()

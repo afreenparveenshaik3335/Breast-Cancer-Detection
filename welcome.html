@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome - AI Breast Cancer Diagnostic Assistant</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+
+            background-image: url("./Assest/img4.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 🔵 Transparent container matching glove tint */
+        .main-box {
+            background: rgba(0, 166, 199, 0.18); /* Transparent glove color */
+            padding: 40px 60px;
+            border-radius: 22px;
+            backdrop-filter: blur(10px); 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+            max-width: 520px;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: #003B4A; /* deep teal text */
+        }
+
+        p {
+            font-size: 18px;
+            color: #0A2F36;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        /* 🔵 Button using exact glove color */
+        .start-button {
+            font-size: 20px;
+            padding: 12px 34px;
+
+            background: linear-gradient(to right, #00A6C7, #007C99);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: 600;
+
+            box-shadow: 0 4px 12px rgba(0, 166, 199, 0.4);
+        }
+
+        .start-button:hover {
+            background: linear-gradient(to right, #0093B1, #006F8A);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-box">
+        <h1>🩺 AI Breast Cancer Diagnostic Assistant</h1>
+        <p>Your intelligent assistant for early breast cancer detection.</p>
+
+        <a href="login.html" class="start-button">Get Started</a>
+    </div>
+</body>
+</html>
