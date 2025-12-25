@@ -33,30 +33,7 @@ class BreastCancerDetectionApp:
         self.load_resources()
 
     def setup_page(self):
-        # Option to change background color
-        st.sidebar.markdown(
-
-            """
-            <a href="http://127.0.0.1:5500/welcome.html">
-                <button style="
-                    width: 100%;
-                    padding: 12px 20px;
-                    background: linear-gradient(135deg, #2C3E50 0%, #3498DB 100%);
-                    color: white;
-                    border: none;
-                    border-radius: 6px;
-                    cursor: pointer;
-                    font-size: 16px;
-                    font-weight: 600;
-                    margin-bottom: 20px;
-                ">
-                  ←- Back to Welcome page
-                </button>
-            </a>
-            """,
-            unsafe_allow_html=True
-        )
-
+        
         
         bg_color = st.sidebar.selectbox("Select Background Color", ["Grey", "White", "Light Blue", "Light Green", "Light Yellow", "Light Grey", "Light Pink"])
         if bg_color == "Grey":
@@ -507,26 +484,14 @@ class BreastCancerDetectionApp:
         input_df = self.interactive_feature_selection()
         # Add logout button at bottom of sidebar
         st.sidebar.markdown("---")
-        st.sidebar.markdown(
-            """
-            <a href="http://127.0.0.1:5500/login.html">
-                <button style="
-                    width: 100%;
-                    padding: 12px 20px;
-                    background: linear-gradient(135deg, #2C3E50 0%, #3498DB 100%);
-                    color: white;
-                    border: none;
-                    border-radius: 6px;
-                    cursor: pointer;
-                    font-size: 16px;
-                    font-weight: 600;
-                ">
-                    ⏻ Logout
-                </button>
-            </a>
-            """,
-            unsafe_allow_html=True
-        )
+        if st.sidebar.button("⏻ Logout"):
+            st.session_state.clear()
+            st.markdown(
+                "<meta http-equiv='refresh' content='0; url=http://127.0.0.1:5500/login.html'>",
+                unsafe_allow_html=True
+            )
+            st.stop()
+
 
         # scale input safely
         try:
